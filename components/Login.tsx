@@ -4,6 +4,7 @@ import { ReactElement } from "react";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { db, auth } from "@/firebase/firebaseClient";
+import StyledButton from "./StyledButton";
 
 interface Props {}
 
@@ -27,12 +28,9 @@ const Login = ({}: Props): ReactElement => {
 
   return (
     <div>
-      <button
-        className="btn bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
-        onClick={() => signInWithGoogle()}
-      >
+      <StyledButton onClick={() => signInWithGoogle()}>
         Sign in with Google
-      </button>
+      </StyledButton>
     </div>
   );
 };
