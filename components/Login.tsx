@@ -14,13 +14,17 @@ const Login = ({}: Props): ReactElement => {
 
   // store user credentials in firestore collection 'users'
   const addUserToFirestore = async (user: User) => {
-    await setDoc(doc(db, "users", user.uid), {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      provider: user.providerData[0].providerId,
-      photoURL: user.photoURL,
-    });
+    await setDoc(
+      doc(db, "users", user.uid),
+      {
+        uid: user.uid,
+        email: user.email,
+        displayName: user.displayName,
+        provider: user.providerData[0].providerId,
+        photoURL: user.photoURL,
+      },
+      { merge: true }
+    );
   };
 
   if (user?.user) {
